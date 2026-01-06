@@ -1,0 +1,30 @@
+{
+  "name": "tauri-goods-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "webpack serve --config webpack.config.js --mode development",
+    "tauri:dev": "cargo tauri dev",
+    "dev:all": "concurrently \"npm:dev\" \"npm:tauri:dev\"",
+    "build:web": "webpack --mode production",
+    "build": "npm run build:web && cargo tauri build"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "@tauri-apps/api": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "@babel/preset-react": "^7.22.0",
+    "babel-loader": "^9.1.2",
+    "concurrently": "^8.0.1",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

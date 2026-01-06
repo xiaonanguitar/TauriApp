@@ -1,0 +1,8 @@
+.container { max-width: 800px; margin: 24px auto; font-family: Arial, sans-serif; }
+h1 { text-align: center; }
+.add-form { display: flex; gap: 12px; align-items: center; }
+.add-form div { display: flex; flex-direction: column; }
+.add-form input { padding: 6px; }
+button { padding: 8px 12px; }
+.goods-table { width: 100%; border-collapse: collapse; }
+.goods-table th, .goods-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
