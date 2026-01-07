@@ -1,29 +1,23 @@
-import { invoke, isTauri } from '@tauri-apps/api/core'
+import axios from 'axios'
+
+const API_BASE = 'http://localhost:8080/api/goods'
 
 export async function getGoods() {
-  if (!isTauri()) {
-    // Fallback in web dev: use localStorage
-    try {
-      const s = localStorage.getItem('goods')
-      return s ? JSON.parse(s) : []
-    } catch (e) {
-      console.warn('local fallback read error', e)
-      return []
-    }
+  try {
+    const res = await axios.get(API_BASE)
+    return res.data || []
+  } catch (e) {
+    console.error('getGoods error', e)
+    // Re-throw so caller can show error
+    throw e
   }
-  return invoke('get_goods')
 }
 
 export async function addGood(good) {
-  if (!isTauri()) {
-    try {
-      const goods = await getGoods()
-      goods.push(good)
-      localStorage.setItem('goods', JSON.stringify(goods))
-      return
-    } catch (e) {
-      throw e
-    }
+  try {
+    await axios.post(API_BASE, good)
+  } catch (e) {
+    console.error('addGood error', e)
+    throw e
   }
-  return invoke('add_good', { good })
 }

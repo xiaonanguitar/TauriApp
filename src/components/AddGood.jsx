@@ -10,7 +10,7 @@ export default function AddGood({ onAdd }) {
     if (!id || !name || !price) return alert('请填写所有字段')
     const p = Number(price)
     if (isNaN(p)) return alert('价格必须为数字')
-    onAdd({ id, name, price: p })
+    onAdd({ name, price: p })
     setId('')
     setName('')
     setPrice('')
